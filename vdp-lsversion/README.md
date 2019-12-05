@@ -4,8 +4,6 @@ The following is a good start on how you can integrate Jenkins with IBM VDP appl
 
 You will need to have a Jenkins instance running on Windows and ActPowerCLI installed. If you need information on how to install the ActPowerCLI module, please checkout https://github.com/Actifio/powershell or https://github.com/Actifio/powershell/tree/master/setup-actpowercli .
 
-You will need to create a Jenkins job and 
-
 ### Step 1:
 Login to the Jenkins server and create a freestyle project by clicking on the New Item link on the top left hand corner. Enter the name of the job - act-lsversion , and click on Freestyle project. Click OK to confirm.
 
