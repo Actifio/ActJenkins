@@ -14,4 +14,4 @@ You will need to create a Jenkins job and
 
 To test out the job, click on Build with Parameters to kick it off. Once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 
-
+![image](https://user-images.githubusercontent.com/17056169/70215685-24e6f000-1792-11ea-8326-a1e1a96f2604.png)
