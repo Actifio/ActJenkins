@@ -20,6 +20,6 @@ Go to the Build section and define the tasks required to build the job. We will 
 To build the job, click on Build with Parameters to kick it off. If required, you can change any the build parameters before triggering the build. 
 ![image](https://user-images.githubusercontent.com/17056169/70215366-6fb43800-1791-11ea-907c-89c8ba525145.png)
 
-### Step 4:
+### Step 5:
 Once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 ![image](https://user-images.githubusercontent.com/17056169/70215685-24e6f000-1792-11ea-8326-a1e1a96f2604.png)
