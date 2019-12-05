@@ -4,7 +4,7 @@ The following is a good start on how you can integrate Jenkins with Actifio VDP 
 
 You will need to have a Jenkins instance running on Windows and ActPowerCLI installed. If you need information on how to install the ActPowerCLI module, please checkout https://github.com/Actifio/powershell or https://github.com/Actifio/powershell/tree/master/setup-actpowercli .
 
-You will need to create a Jenkins job and 
+We will be creating a Jenkins job that accepts Actifio VDP CLI user and credentials, login to the appliance and lists out the VDP version.
 
 ### Step 1:
 Login to the Jenkins server and create a freestyle project by clicking on the New Item link on the top left hand corner. Enter the name of the job - act-lsversion , and click on Freestyle project. Click OK to confirm.
