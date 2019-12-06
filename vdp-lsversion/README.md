@@ -2,6 +2,8 @@
 
 The following is a good start on how you can integrate Jenkins with IBM VDP appliance. We will be using the Jenkins freestyle job and perform the Build using PowerShell scripts.
 
+![image](https://user-images.githubusercontent.com/17056169/70359324-bdcf5580-18cf-11ea-8f39-f29795af96d8.png)
+
 You will need to have a Jenkins instance running on Windows and ActPowerCLI installed. If you need information on how to install the ActPowerCLI module, please checkout https://github.com/Actifio/powershell or https://github.com/Actifio/powershell/tree/master/setup-actpowercli . Also, check under Plugin Manager to ensure that PowerShell plugin is installed. This plugin is required to support Windows PowerShell as build scripts.
 
 We will be creating a Jenkins job that accepts IBM VDP CLI user and credentials, login to the appliance and lists out the IBM VDP version.
