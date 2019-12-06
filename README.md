@@ -8,6 +8,6 @@ The following are some of the project folders:
 
 * **vdp-lsversion** : Jenkins freestyle job to run a single IBM VDP related commands via ActPowerCLI for Jenkins running on a Windows OS.  It also demonstrates parameterized build. 
 
-* **actpipe** : Jenkins pipeline job to run multiple Actifio related commands in stages using ActPowerCLI for Jenkins running on a Windows OS. Also, integrate with GitHub repository.
+* **actpipe** : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using ActPowerCLI for Jenkins running on a Windows OS. Also, integrate with GitHub repository.
 
-* **act-runwflow** : Jenkins pipeline job to run multiple Actifio related commands in stages using bash, Oracle SQL scripts and ssh for Jenkins running on a Linux OS.  Also, integrate with GitHub repository and credentials are stored in Jenkins datastore.
+* **act-runwflow** : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using bash, Oracle SQL scripts and ssh for Jenkins running on a Linux OS.  Also, integrate with GitHub repository and credentials are stored in Jenkins datastore.
