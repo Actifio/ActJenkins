@@ -32,7 +32,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    udsinfo lsversion | select installed, component
+    udsinfo lsversion | format-table installed, component -auto
     Disconnect-Act | Out-Null
  } 
 
