@@ -32,7 +32,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    udsinfo lsversion
+    udsinfo lsversion | format-list
     Disconnect-Act | Out-Null
  } 
 
