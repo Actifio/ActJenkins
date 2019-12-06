@@ -20,15 +20,15 @@ If(!(test-path $LocalTempDir)) {
     }
     
 $TmpPasswdFile = "$LocalTempDir\$env:USERNAME-passwd.key"
-"$env:ActPass" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File $TmpPasswdFile
+"$ActPass" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File $TmpPasswdFile
 
 if (! $env:ACTSESSIONID ){
-   Connect-Act $env:ActIP -actuser $env:ActUser -passwordfile $TmpPasswdFile -ignorecerts
+   Connect-Act $ActIP -actuser $ActUser -passwordfile $TmpPasswdFile -ignorecerts
 }
 
 
 if (! $env:ACTSESSIONID ){
-   write-warning "Login to CDS $Env:ActifioIP failed"
+   write-warning "Login to CDS $ActIP failed"
    break
  }
  else {
