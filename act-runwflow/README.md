@@ -153,3 +153,12 @@ pipeline {
 
 ### Step 4:
 To build the job, click on Build with Parameters to kick it off. 
+![image](https://user-images.githubusercontent.com/17056169/70308363-31854a00-185f-11ea-831a-2d545676dde7.png)
+
+
+### Step 5:
+Click on the Blue Ocean link to have a better view of job.
+![image](https://user-images.githubusercontent.com/17056169/70308468-6ee9d780-185f-11ea-9c2b-6954c6328c4b.png)
+
+Click on one of the many stages, and view the output.
+![image](https://user-images.githubusercontent.com/17056169/70308486-7b6e3000-185f-11ea-971f-b9883aa8cc55.png)
