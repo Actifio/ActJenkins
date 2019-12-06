@@ -14,11 +14,14 @@ We will be creating a Jenkins pipeline job that accepts Actifio VDP CLI user and
 ### Step 1:
 Login to the Jenkins server and create a pipeline project by clicking on the New Item link on the top left hand corner. Enter the name of the job - act-pipe-ls-health , and click on Pipeline project. Click OK to confirm.
 
+![image](https://user-images.githubusercontent.com/17056169/70288911-45ad5500-1827-11ea-8d6d-3b87ef8c9517.png)
+
 ### Step 2:
 
 Under the pipeline section, we will be using the Jenkins declarative pipeline, instead of the scripted pipeline. Declarative is simpler to learn and more friendly syntax in defining the how the job is being built. Scripted pipeline is based on Groovy programming language, and more complex if you are not a developer.
 
-Enter the following code:
+Enter the following code in the rectangle box in the Pipeline section:
+![image](https://user-images.githubusercontent.com/17056169/70289011-94f38580-1827-11ea-90f8-227beccfa2ab.png)
 
 ```
 pipeline {
