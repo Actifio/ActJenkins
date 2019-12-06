@@ -2,7 +2,7 @@
 
 The following is a good start on how you can integrate Jenkins with Actifio VDP appliance. We will be using the Jenkins freestyle job and perform the Build using PowerShell scripts.
 
-![image](https://user-images.githubusercontent.com/17056169/70359068-0d615180-18cf-11ea-927e-c6fd57ef2229.png)
+![image](https://user-images.githubusercontent.com/17056169/70359440-ff600080-18cf-11ea-9b72-594482ea742f.png)
 
 You will need to have a Jenkins instance running on Windows and ActPowerCLI installed. If you need information on how to install the ActPowerCLI module, please checkout https://github.com/Actifio/powershell or https://github.com/Actifio/powershell/tree/master/setup-actpowercli . Also, check under Plugin Manager to ensure that PowerShell plugin is installed. This plugin is required to support Windows PowerShell as build scripts.
 
