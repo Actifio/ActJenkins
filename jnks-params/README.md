@@ -27,6 +27,11 @@ Using Groovy Script:
 How to reference the vaule in Jenkins running on Linux?
 
 bash:
+Built-in:
+```
+$hostname
+```
+Reference:
 ```
 echo "The current state in Australia is ${CurrState}"
 ```
@@ -35,6 +40,11 @@ echo "The current state in Australia is ${CurrState}"
 How to reference the vaule in Jenkins running on Windows?
 
 Windows PowerShell:
+Built-in:
+```
+$env:hostname
+```
+Reference:
 ```
 LoginServer -User $UserID -Password $UserPass
 ```
