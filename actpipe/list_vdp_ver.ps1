@@ -32,7 +32,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    udsinfo lsversion | select-object installed, component 
+    udsinfo lsversion | select @{name="installed"; expression={$_.installed}}, @{name="component"; expression={"{0,15}" -f $_.component}}, @{name="version"; expression={"{0,25}" -f $_.version}} 
     Disconnect-Act | Out-Null
  } 
 
