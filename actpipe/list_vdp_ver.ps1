@@ -8,6 +8,12 @@
 ##     : ActIP - IP address or FQDN of the Actifio appliance
 ##
 
+param(
+[string]$ActUser,
+[string]$ActPass,
+[string]$ActIP
+)
+
 $LocalTempDir = "c:\temp\"
 If(!(test-path $LocalTempDir)) {
     New-Item -ItemType Directory -Force -Path $LocalTempDir | out-null
