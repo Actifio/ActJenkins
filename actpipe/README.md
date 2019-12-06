@@ -22,6 +22,8 @@ Under the pipeline section, we will be using the Jenkins declarative pipeline, i
 
 In this job, we have broken into four stages: 1) clone a copy of the code from GitHub, 2) Run the PowerShell script containing the udsinfo lsversion code, 3) Run the PowerShell script containing the reporthealth script, and 4) Clean up the cloned GitHub directory
 
+Both the PowerShell scripts in Stage 2 and 3 are stored in the https://github.com/Actifio/ActJenkins/tree/master/actpipe folder. This way once the job is created, DevOps engineers can make changes to the code the Git repository and not worry of propagating the changes to Jenkins.
+
 Enter the following code in the rectangle box in the Pipeline section:
 ![image](https://user-images.githubusercontent.com/17056169/70289011-94f38580-1827-11ea-90f8-227beccfa2ab.png)
 
