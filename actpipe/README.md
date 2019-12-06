@@ -27,8 +27,8 @@ pipeline {
     // variables for the parameterised execution
     parameters {
       string(defaultValue: "admin", description: 'Actifio Username', name: 'ActUser')
-      password(defaultValue: "actifio", description: 'Actifio Password', name: 'ActPass')
-      string(defaultValue: "10.65.5.35", description: 'Actifio Appliance', name: 'ActIP')  
+      password(defaultValue: "TopSecret", description: 'Actifio Password', name: 'ActPass')
+      string(defaultValue: "10.65.5.99", description: 'Actifio Appliance', name: 'ActIP')  
     }
 
     environment {
