@@ -4,6 +4,8 @@ As an alternative way of running a Jenkins job as freestyle, consider using the 
 
 The following is a an example of how we can integrate Jenkins with Actifio VDP appliance and deploy the build job as a pipeline. The pipeline approach allows us to visualise the build and build the job using scripts/code. The code can be checked out from a source code repository and build can automated, in this case provisioning of virtual copies of applications managed by Actifio VDP.
 
+![image](https://user-images.githubusercontent.com/17056169/70358996-c6735c00-18ce-11ea-83a9-a893a4543d52.png)
+
 You will need to have a Jenkins instance running on Windows and ActPowerCLI installed. Also, check under Plugin Manager to ensure that 
 - PowerShell plugin: This plugin is required to support Windows PowerShell as build scripts.
 - Blue Ocean plugin: This plugin provides you an intuitive and visual view of the build
