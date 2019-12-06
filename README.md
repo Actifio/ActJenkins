@@ -22,4 +22,5 @@ The following are some of the project folders demonstrating advanced Jenkins fea
 * **jnks-cli** : List of useful Jenkins CLI commands
 * **jnks-scheduler** : Using Jenkins as a job scheduler
 * **jnks-authentication** : Integrating Jenkins with Active Directory
+* **jnks-params** : Setting up Jenkins
 ---
