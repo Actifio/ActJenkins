@@ -7,12 +7,48 @@ The following is a an example of how we can integrate Jenkins with Actifio VDP a
 You will need to have a Jenkins instance running on Linux installed. By default, bash will be available and we will be using bash to trigger the jobs on the remote server. Install git on the Jenkins server to allow the job to clone source code from GitHub repository. Also, check under Plugin Manager to ensure that 
 - Blue Ocean plugin: This plugin provides you an intuitive and visual view of the build
 
-In this example, we will be using the public/private key to connect from the Jenkins server to the Oracle server. We will be ssh-ing to the Oracle server as oracle from the jenkins user on the Jenkins server. In Jenkins, we will be storing the credential in Jenkins store. In addition, we will also be storing the system Oracle user along with the password. 
+In this example, we will be using the public/private key to connect from the Jenkins server to the Oracle server. We will be ssh-ing to the Oracle server as oracle from the jenkins user on the Jenkins server. 
+
+The following is how we login to the Oracle server from the Jenkins server.
+```
+jenkins@dev-ubuntu:~$ ls -la .ssh
+total 20
+drwx------  2 jenkins jenkins 4096 Dec  3 11:54 .
+drwxr-xr-x 19 jenkins jenkins 4096 Dec  6 14:26 ..
+-rw-------  1 jenkins jenkins 1679 Dec  3 11:41 id_rsa
+-rw-r--r--  1 jenkins jenkins  400 Dec  3 11:41 id_rsa.pub
+-rw-r--r--  1 jenkins jenkins  666 Dec  6 14:32 known_hosts
+jenkins@dev-ubuntu:~$ ssh-copy-id -i .ssh/id_rsa.pub oracle@10.65.5.193
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: ".ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+oracle@10.65.5.193's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'oracle@10.65.5.193'"
+and check to make sure that only the key(s) you wanted were added.
+
+jenkins@dev-ubuntu:~$ ssh oracle@10.65.5.193
+Last login: Fri Dec  6 14:33:08 2019 from 10.65.5.138
+[oracle@syd-ora12-1 ~]$ exit
+logout
+Connection to 10.65.5.193 closed.
+```
+
+In Jenkins, we will be storing the credential in Jenkins store. In addition, we will also be storing the system Oracle user along with the password. 
 
 ![image](https://user-images.githubusercontent.com/17056169/70307398-2df0c380-185d-11ea-89f0-c44121584065.png)
 
 Following is how we store
 a) ssh keys
+
+Get the SSH key that we used earlier:
+```
+jenkins@dev-ubuntu:~$ cat .ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAvWyT4XhqXkZIDoThVWndHpzd2JxAqdt4m5HPTGYYvIFcA/XdvOgK9p+4OxonyFUpIJduNzALuQOUlvHrHA6iagbFbRChWD5Dq09bYclV6E/9AJrCODn+mZi6oLUu6N1cCDegDgvYJeLBZkOK/ZYNM9IqzjSgJR4fuL5HoUGjbSyUg2n/w+5Ft0pwEiP94erNWdO9Wn7NuAuYtv3GLiPtkNrhqd3Ctd2FE1ZUSE6Bly9B5/y1NYAyZfPFgVmTw6AmG8HIJMy58rmiI2EY/2Xv+/NNzUJFk//RBUpJtxvbUBwgllxHYlCIFG1lqd9Sp/AcEwLd/H6RDINPndugfMOB jenkins@dev-ubuntu
+```
+
 ![image](https://user-images.githubusercontent.com/17056169/70307439-46f97480-185d-11ea-8b63-2abd42f51647.png)
 
 b) Oracle credentials to the Oracle database
