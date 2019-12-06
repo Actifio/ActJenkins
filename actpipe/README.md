@@ -95,7 +95,7 @@ pipeline {
 }
 ```
 
-### Step 4:
+### Step 3:
 To build the job, click on Build with Parameters to kick it off. The first job failed as the parameters are not passed to the job. As you can see in the code, we are creating the parameters in the Jenkins declarative code.
 ```
     // variables for the parameterised execution
@@ -110,7 +110,7 @@ Run the job again, and you will be prompted for the Actifio related parameters:
 
 If required, you can change any the build parameters before triggering the build. Click on Build to start.
 
-### Step 5:
+### Step 4:
 Once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 ![image](https://user-images.githubusercontent.com/17056169/70289714-c2413300-1829-11ea-94b4-edfbecbddb68.png)
 
