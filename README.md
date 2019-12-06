@@ -1,5 +1,7 @@
 # How to integrate Actifio with Jenkins
 
+![image](https://user-images.githubusercontent.com/17056169/70358217-f1f54700-18cc-11ea-864f-2abecadaf539.png)
+
 ### Why do I want integrate with Jenkins?
 
 As you probably aware, Actifio comes with the HTML5 GUI called Actifio Global Manager (AGM). There are times customer will like to use a DevOps CI tool such as Jenkins because:
