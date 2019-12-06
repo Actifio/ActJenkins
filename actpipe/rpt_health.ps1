@@ -32,7 +32,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    reporthealth | format-list
+    reporthealth | | select-object status, checkname
     Disconnect-Act | Out-Null
  } 
 
