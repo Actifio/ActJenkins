@@ -32,7 +32,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    reporthealth
+    reporthealth | format-list
     Disconnect-Act | Out-Null
  } 
 
