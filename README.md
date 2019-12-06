@@ -8,8 +8,8 @@ As you probably aware, Actifio comes with the HTML5 GUI called Actifio Global Ma
 
 * Jenkins is more user centric, and easily customise to support self-service
 * AGM is more Actifio centric where Jenkins can incorporate other tasks in the jobs
-* Jenkins jobs can be integrated with source code repository, scripting languages and other DevOps tools
-* Jenkins provide built in automation and scheduling (e-mail notifications, Slack integration)
+* Jenkins jobs can be integrated with source code repository, scripting languages ((bash, Ruby, Python, Powershell, Java, Gradle, Groovy, etc) and other DevOps tools
+* Jenkins provide built in automation and scheduling (e-mail notifications, Slack integration), highly extensible and rich plug-ins ecosystem. 
 
 ---
 
