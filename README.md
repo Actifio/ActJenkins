@@ -39,5 +39,6 @@ The following are some of the project folders demonstrating advanced Jenkins fea
 * **jnks-cli** : List of useful Jenkins CLI commands
 * **jnks-scheduler** : Using Jenkins as a job scheduler
 * **jnks-authentication** : Integrating Jenkins with Active Directory
-* **jnks-setup** : Setting up Jenkins
+* [**jnks-inst-setup**](https://github.com/Actifio/ActJenkins/tree/master/jnks-inst-setup) : Installing and setting up Jenkins
+
 ---
