@@ -1,7 +1,7 @@
 ### How to install and setup Jenkins
 
 ---
-Installing Jenkins on Ubuntu
+##### Installing Jenkins on Ubuntu
   
 Follow the steps below to install Jenkins on Ubuntu:
   
@@ -21,3 +21,23 @@ Follow the steps below to install Jenkins on Ubuntu:
 If you need to find out what Jenkins is doing, check out the Jenkins log file - /var/log/jenkins/jenkins.log .
 
 ---
+
+##### Setting Up Jenkins
+
+After we have successfully installed Jenkins, we can now begin setting it up:
+
+1. To setup Jenkins, enter http://IPaddress:8080, you will be prompted for the Administrator's password. Look for it in /var/lib/jenkins/secrets/initialAdminPassword .
+![image](https://user-images.githubusercontent.com/17056169/70364449-c7ad8480-18e0-11ea-961c-066ea07a7748.png)
+2. If you need to make modifications to the Jenkins configuration from command line, update the settings in /etc/default/Jenkins file. And, if you need to trouble authentication problems in Jenkins, have a look at /var/log/auth.log .
+3. You can either select Install suggested plugins or select plugins to install. In our case, we choose the former option.
+![image](https://user-images.githubusercontent.com/17056169/70364494-e90e7080-18e0-11ea-8b22-ca5ff192f9d8.png)
+4. Click on Continue as admin, or Create First Admin User if required. We will create an admin account named actadmin. 
+![image](https://user-images.githubusercontent.com/17056169/70364544-0cd1b680-18e1-11ea-8f25-2f8354799f28.png)
+5. Click on Save and Finish.
+![image](https://user-images.githubusercontent.com/17056169/70364592-3a1e6480-18e1-11ea-83e2-b83edb4adc0c.png)
+
+---
+
+  
+
+Click on the Start using Jenkins button to start using Jenkins.
