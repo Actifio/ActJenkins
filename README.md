@@ -37,8 +37,8 @@ The following are some of the project folders demonstrating advanced Jenkins fea
 * [**jnks-customised**](https://github.com/Actifio/ActJenkins/tree/master/jnks-customised) : Customising a Jenkins login page
 * **jnks-plugins** : List of useful and handy plugins
 * **jnks-cli** : List of useful Jenkins CLI commands
-* **jnks-scheduler** : Using Jenkins as a job scheduler
-* **jnks-authentication** : Integrating Jenkins with Active Directory
+* [**jnks-scheduler**](https://github.com/Actifio/ActJenkins/tree/master/jnks-scheduler) : Using Jenkins as a job scheduler
+* [**jnks-authentication**](https://github.com/Actifio/ActJenkins/tree/master/jnks-authentication) : Integrating Jenkins with Active Directory
 * [**jnks-inst-setup**](https://github.com/Actifio/ActJenkins/tree/master/jnks-inst-setup) : Installing and setting up Jenkins
 
 ---
