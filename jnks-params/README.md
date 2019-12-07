@@ -57,3 +57,34 @@ Reference:
 ```
 LoginServer -User $UserID -Password $UserPass
 ```
+---
+
+```
+// Active Choices Parameter
+//
+def powerShellCommand = 'c:\\ps\\list_oracle.ps1'
+def shellCommand = "c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+
+def errorStream = new StringBuffer()
+def outputStream = new StringBuffer()
+
+def process = shellCommand.execute()
+process.waitForProcessOutput(outputStream, errorStream)
+
+if (errorStream) {
+  println errorStream
+}
+
+def images = []
+if (outputStream) {
+  println outputStream
+  images = outputStream.tokenize("|")
+}
+return images
+
+
+// def powerShellCommand = 'c:\\ps\\_list_apphost.ps1 -srchhostname ' + Host
+// def powerShellCommand = 'c:\\ps\\_list_wflows.ps1 -srchappname ' + AppName  + ' -srchapptype ' + AppType
+// def powerShellCommand = 'c:\\ps\\_get_apptype.ps1 -hostname ' + Host  + ' -srchappname ' + AppName
+```
+---
