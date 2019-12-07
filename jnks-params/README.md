@@ -9,6 +9,15 @@ The following are the different parameterized build supported:
 ![image](https://user-images.githubusercontent.com/17056169/70323072-f6474300-187f-11ea-9726-e3770e1868a6.png)
 
 * **DATE** : Date  
+```
+Date Format: yyyy-MM-dd  |  dd/MM/yyyy
+
+LocalDate.now();
+LocalDate.now().plusDays(1).plusMinutes(5);
+LocalDate.now().plusDays(1).plusMinutes(5).plusYears(1);
+LocalDate.now().minusDays(5);
+Default Value: LocalDate.now().minusDays(1);  |  01/05/2017
+```
 ![image](https://user-images.githubusercontent.com/17056169/70323111-0e1ec700-1880-11ea-9b47-828bb5559331.png)
 
 * **BOOLEAN** : Boolean   
