@@ -61,7 +61,7 @@ LoginServer -User $UserID -Password $UserPass
 
 The following is what you can do to setup dynamic parameters. Values for the AppType parameter is dynamically populated from a PowerShell script on the Jenkins server using the Actifio CLI credentials. You would need to upload the PS scripts to C:\SQL directory on the Jenkins server. The output is as follow:
 
-![image](https://user-images.githubusercontent.com/17056169/70388243-2bc86980-1a03-11ea-9310-86e31766c378.png)
+![image](https://user-images.githubusercontent.com/17056169/70397821-96ac8b80-1a69-11ea-8cdc-d6379372ea6a.png)
 
 ActIP : STRING parameter  
 ActUser : STRING parameter  
@@ -69,7 +69,7 @@ ActPass : PASSWORD parameter
 
 
 Parameter Name: AppType   
-Paramater Type: Active Choices Reactive parameter  
+Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: ActPass,ActIP,ActUser  
 Groovy script:
 ```
@@ -148,7 +148,7 @@ return $message
 ```
 
 Parameter Name: AppName  
-Paramater Type: Active Choices Reactive parameter  
+Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: ActType,ActPass,ActIP,ActUser  
 Groovy script:
 ```
@@ -221,4 +221,92 @@ rm "$TmpPasswdFile" -ErrorAction SilentlyContinue
 
 return $message
 ```
+
+Parameter Name: AppType   
+Parameter Type: Active Choices Reactive parameter  
+Referenced parameters: AppName,AppType,ActPass,ActIP,ActUser  
+Groovy script:
+```
+def WflowNameList = []
+def powerShellCommand = 'c:\\sql\\list_wflows.ps1 -ActIP ' + ActIP + ' -ActUser ' + ActUser + ' -ActPass ' + ActPass + ' -AppType ' + AppType + ' -AppName ' + AppName
+
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+
+def process = shellCommand.execute()
+process.waitFor()
+def outputStream = new StringBuffer();
+process.waitForProcessOutput(outputStream, System.err)
+if(process.exitValue()){
+  println process.err.text
+} else {
+  println outputStream
+  WflowNameList = outputStream.tokenize("|")
+}
+return WflowNameList
+```
+
+Content of the Powershell Script: C:\SQL\list_wflows.ps1
+```
+param(
+[string] $ActIP,
+[string] $ActUser,
+[string] $ActPass,
+[string] $AppType,
+[string] $AppName
+)
+
+$env:IGNOREACTCERTS = $true
+ 
+$LocalTempDir = "c:\temp\"
+If(!(test-path $LocalTempDir)) {
+    New-Item -ItemType Directory -Force -Path $LocalTempDir | out-null
+    }
+    
+$TmpPasswdFile = "$LocalTempDir\$env:USERNAME-passwd.key"
+
+"$ActPass" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File $TmpPasswdFile
+
+if (! $env:ACTSESSIONID ){
+   Connect-Act $ActIP -actuser $ActUser -passwordfile $TmpPasswdFile -ignorecerts | Out-Null
+}
+
+$message = ""
+
+if (! $env:ACTSESSIONID ){
+   write-warning "Login to CDS $ActIP failed"
+   break
+   }
+ else {
+
+   $appid = $(udsinfo lsapplication -filtervalue "appname=$AppName&appclass=$AppType").id
+
+   if (! $appid ){
+      write-warning "`nApplication Not Found`n"
+      break
+   }
+   $workflow = $(reportworkflows -a $appid)
+
+   if (! $workflow){
+     write-warning "`nNo workflows associated with this application`n"
+     break
+     }
+
+   $first = $true
+   foreach($item in $workflow) {
+     if ($first -eq $true) {
+       $first = $false
+       $message = '{0}' -f $item.WorkflowName
+     } else {
+       $message = $message + "|" + '{0}' -f $item.WorkflowName
+     }
+   }
+
+   Disconnect-Act | Out-Null
+ } 
+
+rm "$TmpPasswdFile" -ErrorAction SilentlyContinue 
+
+return $message
+```
+
 ---
