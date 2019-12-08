@@ -59,7 +59,7 @@ LoginServer -User $UserID -Password $UserPass
 ```
 ---
 
-The following is what you can do to setup dynamic parameters. Values for the AppType parameter is dynamically populated from a PowerShell script on the Jenkins server using the Actifio CLI credentials. The output is as follow:
+The following is what you can do to setup dynamic parameters. Values for the AppType parameter is dynamically populated from a PowerShell script on the Jenkins server using the Actifio CLI credentials. You would need to upload the PS scripts to C:\SQL directory on the Jenkins server. The output is as follow:
 
 ![image](https://user-images.githubusercontent.com/17056169/70388243-2bc86980-1a03-11ea-9310-86e31766c378.png)
 
@@ -119,6 +119,8 @@ if (! $env:ACTSESSIONID ){
  else {
 
    $dbtype = $(reportapps | sort-object apptype -unique | select apptype)
+   
+   # Only list application type of SQLServer and Oracle if there are any
    # $dbtype = $( reportapps | where-object {$_.AppType -eq 'SQLServer' -or $_.AppType -eq 'Oracle'} | sort-object apptype -unique | select apptype)
 
    if (! $dbtype){
@@ -126,7 +128,6 @@ if (! $env:ACTSESSIONID ){
      break
      }
 
-   $dbtype | out-file "c:\scripts\dbtype.txt" 
    $first = $true
 
    foreach($item in $dbtype) {
@@ -204,9 +205,7 @@ if (! $env:ACTSESSIONID ){
      break
      }
 
-   $dbtype | out-file "c:\scripts\dbtype.txt" 
    $first = $true
-
    foreach($item in $dbappname) {
      if ($first -eq $true) {
        $first = $false
