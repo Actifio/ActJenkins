@@ -59,32 +59,173 @@ LoginServer -User $UserID -Password $UserPass
 ```
 ---
 
-```
-// Active Choices Parameter
-//
-def powerShellCommand = 'c:\\ps\\list_oracle.ps1'
-def shellCommand = "c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+![image](https://user-images.githubusercontent.com/17056169/70388243-2bc86980-1a03-11ea-9310-86e31766c378.png)
 
-def errorStream = new StringBuffer()
-def outputStream = new StringBuffer()
+ActIP : STRING parameter  
+ActUser : STRING parameter  
+ActPass : PASSWORD parameter  
+
+AppType : Active Choices Reactive parameter
+
+Groovy script:
+```
+def AppTypeList = []
+def powerShellCommand = 'c:\\sql\\list_apptype.ps1 -ActIP ' + ActIP + ' -ActUser ' + ActUser + ' -ActPass ' + ActPass
+
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
 
 def process = shellCommand.execute()
-process.waitForProcessOutput(outputStream, errorStream)
+process.waitFor()
+def outputStream = new StringBuffer();
+process.waitForProcessOutput(outputStream, System.err)
+if(process.exitValue()){
+println process.err.text
+} else {
+println outputStream
+AppTypeList = outputStream.tokenize("|")
+}
+return AppTypeList
+```
+Referenced parameters: ActPass,ActIP,ActUser
 
-if (errorStream) {
-  println errorStream
+Powershell Script: C:\SQL\list_apptype.ps1
+```
+param(
+[string] $ActIP,
+[string] $ActUser,
+[string] $ActPass)
+
+$env:IGNOREACTCERTS = $true
+ 
+$LocalTempDir = "c:\temp\"
+If(!(test-path $LocalTempDir)) {
+    New-Item -ItemType Directory -Force -Path $LocalTempDir | out-null
+    }
+    
+$TmpPasswdFile = "$LocalTempDir\$env:USERNAME-passwd.key"
+
+"$ActPass" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File $TmpPasswdFile
+
+if (! $env:ACTSESSIONID ){
+   Connect-Act $ActIP -actuser $ActUser -passwordfile $TmpPasswdFile -ignorecerts | Out-Null
 }
 
-def images = []
-if (outputStream) {
-  println outputStream
-  images = outputStream.tokenize("|")
+$message = ""
+
+if (! $env:ACTSESSIONID ){
+   write-warning "Login to CDS $ActIP failed"
+   break
+   }
+ else {
+
+   $dbtype = $(reportapps | sort-object apptype -unique | select apptype)
+   # $dbtype = $( reportapps | where-object {$_.AppType -eq 'SQLServer' -or $_.AppType -eq 'Oracle'} | sort-object apptype -unique | select apptype)
+
+   if (! $dbtype){
+     write-warning "`nNo database types`n"
+     break
+     }
+
+   $dbtype | out-file "c:\scripts\dbtype.txt" 
+   $first = $true
+
+
+   foreach($item in $dbtype) {
+     if ($first -eq $true) {
+       $first = $false
+       $message = '{0}' -f $item.AppType 
+     } else {
+       $message = $message + "|" + '{0}' -f $item.AppType
+     }
+   }
+
+   Disconnect-Act | Out-Null
+ } 
+
+rm "$TmpPasswdFile" -ErrorAction SilentlyContinue 
+
+return $message
+```
+
+AppName : Active Choices Reactive parameter
+
+Groovy script:
+```
+def AppNameList = []
+def powerShellCommand = 'c:\\sql\\list_apps.ps1 -ActIP ' + ActIP + ' -ActUser ' + ActUser + ' -ActPass ' + ActPass + ' -AppType ' + AppType
+
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+
+def process = shellCommand.execute()
+process.waitFor()
+def outputStream = new StringBuffer();
+process.waitForProcessOutput(outputStream, System.err)
+if(process.exitValue()){
+println process.err.text
+} else {
+println outputStream
+AppNameList = outputStream.tokenize("|")
 }
-return images
+return AppNameList
+```
+Referenced parameters: ActType,ActPass,ActIP,ActUser
+
+Powershell Script: C:\SQL\list_apps.ps1
+```
+param(
+[string] $ActIP,
+[string] $ActUser,
+[string] $ActPass,
+[string] $AppType)
+
+$env:IGNOREACTCERTS = $true
+ 
+$LocalTempDir = "c:\temp\"
+If(!(test-path $LocalTempDir)) {
+    New-Item -ItemType Directory -Force -Path $LocalTempDir | out-null
+    }
+    
+$TmpPasswdFile = "$LocalTempDir\$env:USERNAME-passwd.key"
+
+"$ActPass" | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Out-File $TmpPasswdFile
+
+if (! $env:ACTSESSIONID ){
+   Connect-Act $ActIP -actuser $ActUser -passwordfile $TmpPasswdFile -ignorecerts | Out-Null
+}
+
+$message = ""
+
+if (! $env:ACTSESSIONID ){
+   write-warning "Login to CDS $ActIP failed"
+   break
+   }
+ else {
+
+   $dbappname = $(reportapps | where-object {$_.AppType -eq $AppType} | select-object AppName)
+
+   if (! $dbappname){
+     write-warning "`nNo list of database names`n"
+     break
+     }
+
+   $dbtype | out-file "c:\scripts\dbtype.txt" 
+   $first = $true
 
 
-// def powerShellCommand = 'c:\\ps\\_list_apphost.ps1 -srchhostname ' + Host
-// def powerShellCommand = 'c:\\ps\\_list_wflows.ps1 -srchappname ' + AppName  + ' -srchapptype ' + AppType
-// def powerShellCommand = 'c:\\ps\\_get_apptype.ps1 -hostname ' + Host  + ' -srchappname ' + AppName
+   foreach($item in $dbappname) {
+     if ($first -eq $true) {
+       $first = $false
+       $message = '{0}' -f $item.AppName
+     } else {
+       $message = $message + "|" + '{0}' -f $item.AppName
+     }
+   }
+
+   Disconnect-Act | Out-Null
+ } 
+
+rm "$TmpPasswdFile" -ErrorAction SilentlyContinue 
+
+return $message
 ```
 ---
