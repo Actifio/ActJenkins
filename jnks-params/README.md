@@ -59,36 +59,37 @@ LoginServer -User $UserID -Password $UserPass
 ```
 ---
 
+The following is what you can do to setup dynamic parameters. Values for the AppType parameter is dynamically populated from a PowerShell script on the Jenkins server using the Actifio CLI credentials. The output is as follow:
+
 ![image](https://user-images.githubusercontent.com/17056169/70388243-2bc86980-1a03-11ea-9310-86e31766c378.png)
 
 ActIP : STRING parameter  
 ActUser : STRING parameter  
 ActPass : PASSWORD parameter  
 
-AppType : Active Choices Reactive parameter
 
+Parameter Name: AppType   
+Paramater Type: Active Choices Reactive parameter  
+Referenced parameters: ActPass,ActIP,ActUser  
 Groovy script:
 ```
 def AppTypeList = []
 def powerShellCommand = 'c:\\sql\\list_apptype.ps1 -ActIP ' + ActIP + ' -ActUser ' + ActUser + ' -ActPass ' + ActPass
-
 def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
-
 def process = shellCommand.execute()
 process.waitFor()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 if(process.exitValue()){
-println process.err.text
+  println process.err.text
 } else {
-println outputStream
-AppTypeList = outputStream.tokenize("|")
-}
+  println outputStream
+  AppTypeList = outputStream.tokenize("|")
+  }
 return AppTypeList
 ```
-Referenced parameters: ActPass,ActIP,ActUser
 
-Powershell Script: C:\SQL\list_apptype.ps1
+Content of the Powershell Script: C:\SQL\list_apptype.ps1
 ```
 param(
 [string] $ActIP,
@@ -111,7 +112,6 @@ if (! $env:ACTSESSIONID ){
 }
 
 $message = ""
-
 if (! $env:ACTSESSIONID ){
    write-warning "Login to CDS $ActIP failed"
    break
@@ -128,7 +128,6 @@ if (! $env:ACTSESSIONID ){
 
    $dbtype | out-file "c:\scripts\dbtype.txt" 
    $first = $true
-
 
    foreach($item in $dbtype) {
      if ($first -eq $true) {
@@ -147,30 +146,28 @@ rm "$TmpPasswdFile" -ErrorAction SilentlyContinue
 return $message
 ```
 
-AppName : Active Choices Reactive parameter
-
+Parameter Name: AppName  
+Paramater Type: Active Choices Reactive parameter  
+Referenced parameters: ActType,ActPass,ActIP,ActUser  
 Groovy script:
 ```
 def AppNameList = []
 def powerShellCommand = 'c:\\sql\\list_apps.ps1 -ActIP ' + ActIP + ' -ActUser ' + ActUser + ' -ActPass ' + ActPass + ' -AppType ' + AppType
-
 def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
-
 def process = shellCommand.execute()
 process.waitFor()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
-if(process.exitValue()){
-println process.err.text
+if (process.exitValue()){
+  println process.err.text
 } else {
-println outputStream
-AppNameList = outputStream.tokenize("|")
+  println outputStream
+  AppNameList = outputStream.tokenize("|")
 }
 return AppNameList
 ```
-Referenced parameters: ActType,ActPass,ActIP,ActUser
 
-Powershell Script: C:\SQL\list_apps.ps1
+Content of the Powershell Script: C:\SQL\list_apps.ps1
 ```
 param(
 [string] $ActIP,
@@ -202,7 +199,6 @@ if (! $env:ACTSESSIONID ){
  else {
 
    $dbappname = $(reportapps | where-object {$_.AppType -eq $AppType} | select-object AppName)
-
    if (! $dbappname){
      write-warning "`nNo list of database names`n"
      break
@@ -210,7 +206,6 @@ if (! $env:ACTSESSIONID ){
 
    $dbtype | out-file "c:\scripts\dbtype.txt" 
    $first = $true
-
 
    foreach($item in $dbappname) {
      if ($first -eq $true) {
@@ -220,7 +215,6 @@ if (! $env:ACTSESSIONID ){
        $message = $message + "|" + '{0}' -f $item.AppName
      }
    }
-
    Disconnect-Act | Out-Null
  } 
 
