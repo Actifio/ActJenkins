@@ -112,13 +112,13 @@ If required, you can change any the build parameters before triggering the build
 
 ## Step 4:
 Once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
-![image](https://user-images.githubusercontent.com/17056169/70289714-c2413300-1829-11ea-94b4-edfbecbddb68.png)
+![image](https://user-images.githubusercontent.com/17056169/70406703-b9ed3000-1a95-11ea-8e53-2fb17ea891f2.png)
 
 As you can see all four stages have completed successfully. Click on the Open Blue Ocean link on the left pane, and you will be presented another view of the job. Click on the Check box in the green circle.
-![image](https://user-images.githubusercontent.com/17056169/70289890-59a68600-182a-11ea-85fd-d4fe9281b06b.png)
+![2019-12-09_15-06-22](https://user-images.githubusercontent.com/17056169/70406747-dbe6b280-1a95-11ea-883b-61473bddfa57.png)
 
 In the following screen, it will list the details of each stage of the job. Click on the stage (1) and expand the Print Message to view the output of the command.
-![image](https://user-images.githubusercontent.com/17056169/70289981-9ecab800-182a-11ea-9b02-fee962b71061.png)
+![2019-12-09_15-07-05](https://user-images.githubusercontent.com/17056169/70406773-ec972880-1a95-11ea-9c6d-ffc8d5fd7738.png)
 
 
 ## Conclusion
