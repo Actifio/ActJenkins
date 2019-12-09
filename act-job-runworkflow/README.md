@@ -10,10 +10,10 @@ The high-level steps is as follow:
 Create a new freestyle job
 
 ## Step 2
-Copy the supporting scripts in https://github.com/Actifio/ActJenkins/edit/master/jnks-params project and run_wflow.ps1 to C:\SQL on Jenkins server on Windows
+Copy the supporting scripts in https://github.com/Actifio/ActJenkins/tree/master/jnks-params project and run_wflow.ps1 in https://github.com/Actifio/ActJenkins/tree/master/act-job-runworkflow to C:\SQL directory on Jenkins server on Windows
 
 ## Step 3
-Define Jenkins parameters at the start of the build. We will be using Groovy script that reference other parameters. For more information on the setup, please refer to https://github.com/Actifio/ActJenkins/edit/master/jnks-params/README.md .
+Define Jenkins parameters at the start of the build. We will be using Groovy script that reference other parameters. For more information on the setup, please refer to https://github.com/Actifio/ActJenkins/tree/master/jnks-params under the **Jenkins parameterised build using Active Choices Reactive parameter** section.
 
 ## Step 4
 Trigger PowerShell script by calling the PowerShell script that refresh the database/application using a workflow
