@@ -16,7 +16,7 @@ We will be creating a Jenkins pipeline job that accepts Actifio VDP CLI user and
 ## Step 1:
 Login to the Jenkins server and create a pipeline project by clicking on the New Item link on the top left hand corner. Enter the name of the job - **act-pipeline-runcommands** , and click on Pipeline project. Click OK to confirm.
 
-![image](https://user-images.githubusercontent.com/17056169/70288911-45ad5500-1827-11ea-8d6d-3b87ef8c9517.png)
+![image](https://user-images.githubusercontent.com/17056169/70406957-91b20100-1a96-11ea-81c9-da5d4195590d.png)
 
 ## Step 2:
 
@@ -106,7 +106,7 @@ To build the job, click on Build with Parameters to kick it off. The first job f
     }
 ```
 Run the job again, and you will be prompted for the Actifio related parameters:
-![image](https://user-images.githubusercontent.com/17056169/70289304-73df6480-1828-11ea-8e85-9f7784a5cf21.png)
+![image](https://user-images.githubusercontent.com/17056169/70406982-a9898500-1a96-11ea-9435-2e87d90d5639.png)
 
 If required, you can change any the build parameters before triggering the build. Click on Build to start.
 
