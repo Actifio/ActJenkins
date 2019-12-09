@@ -59,7 +59,7 @@ LoginServer -User $UserID -Password $UserPass
 ```
 ---
 
-#### Jenkins parameterised build using Active Choices Reactive parameter
+### Jenkins parameterised build using Active Choices Reactive parameter
 
 The following is what you can do to setup dynamic parameters. Values for the AppType parameter is dynamically populated from a PowerShell script on the Jenkins server using the Actifio CLI credentials. You would need to upload the PS scripts to C:\SQL directory on the Jenkins server. The output is as follow:
 
