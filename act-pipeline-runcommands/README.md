@@ -14,7 +14,7 @@ You will need to have a Jenkins instance running on Windows and ActPowerCLI inst
 We will be creating a Jenkins pipeline job that accepts Actifio VDP CLI user and credentials, login to the appliance and as part of the pipeline, run two stages: check the VDP version and check the health of the appliance.
 
 ## Step 1:
-Login to the Jenkins server and create a pipeline project by clicking on the New Item link on the top left hand corner. Enter the name of the job - act-pipe-ls-health , and click on Pipeline project. Click OK to confirm.
+Login to the Jenkins server and create a pipeline project by clicking on the New Item link on the top left hand corner. Enter the name of the job - *act-pipeline-runcommands* , and click on Pipeline project. Click OK to confirm.
 
 ![image](https://user-images.githubusercontent.com/17056169/70288911-45ad5500-1827-11ea-8d6d-3b87ef8c9517.png)
 
