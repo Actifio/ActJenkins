@@ -19,13 +19,15 @@ Here is where we share with you how you can easily integrate Actifio related tas
 
 The following are some of the project folders demonstrating the integration:
 
-* [**act-lsversion**](https://github.com/Actifio/ActJenkins/tree/master/act-lsversion) : Jenkins freestyle job to run a single Actifio related commands via ActPowerCLI for Jenkins running on a Windows OS. It also demonstrates parameterized build. 
+* [**act-job-lsversion**](https://github.com/Actifio/ActJenkins/tree/master/act-job-lsversion) : Jenkins freestyle job to run a single Actifio related commands via ActPowerCLI for Jenkins running on a Windows OS. It also demonstrates simple parameterized build. 
 
-* [**vdp-lsversion**](https://github.com/Actifio/ActJenkins/tree/master/vdp-lsversion) : Jenkins freestyle job to run a single IBM VDP related commands via ActPowerCLI for Jenkins running on a Windows OS.  It also demonstrates parameterized build. 
+* [**act-pipeline-runcommands**](https://github.com/Actifio/ActJenkins/tree/master/act-pipeline-runcommands) : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using ActPowerCLI for Jenkins running on a Windows OS. Also, integrate with GitHub repository.  
 
-* [**actpipe**](https://github.com/Actifio/ActJenkins/tree/master/actpipe) : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using ActPowerCLI for Jenkins running on a Windows OS. Also, integrate with GitHub repository.
+* **act-pipeline-runworkflow** WIP : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using bash, Oracle SQL scripts and ssh for Jenkins running on a Linux OS.  Also, integrate with GitHub repository and credentials are stored in Jenkins datastore.  
 
-* **act-runwflow** : Jenkins declarative pipeline job to run multiple Actifio related commands in stages using bash, Oracle SQL scripts and ssh for Jenkins running on a Linux OS.  Also, integrate with GitHub repository and credentials are stored in Jenkins datastore.
+* [**act-pipeline-runworkflow**](https://github.com/Actifio/ActJenkins/tree/master/act-pipeline-runworkflow) : Jenkins freestyle job to refresh an Actifio workflow via ActPowerCLI for Jenkins running on a Windows OS. It also demonstrates advanced parameterized build using Groovy script. 
+
+* [**vdp-job-lsversion**](https://github.com/Actifio/ActJenkins/tree/master/vdp-job-lsversion) : Jenkins freestyle job to run a single IBM VDP related commands via ActPowerCLI for Jenkins running on a Windows OS.  It also demonstrates simple parameterized build. 
 
 ---
 
