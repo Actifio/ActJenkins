@@ -16,7 +16,7 @@ In this job, we want to allow the user to provide inputs when running the job. W
 ![image](https://user-images.githubusercontent.com/17056169/70215213-206e0780-1791-11ea-8749-e612266cc0b7.png)
 
 ## Step 3:
-Go to the Build section and define the tasks required to build the job. We will be making calls to Actifio VDP appliance using the commands in ActPowerCLI modules. You can copy and paste the source code from https://github.com/Actifio/ActJenkins/blob/master/act-lsversion/actlsversion.ps1 into the PowerShell Build window .
+Go to the Build section and define the tasks required to build the job. We will be making calls to Actifio VDP appliance using the commands in ActPowerCLI modules. You can copy and paste the source code from https://github.com/Actifio/ActJenkins/blob/master/act-job-lsversion/act-job-lsversion.ps1 into the PowerShell Build window .
 
 ## Step 4:
 To build the job, click on Build with Parameters to kick it off. If required, you can change any the build parameters before triggering the build. 
