@@ -47,6 +47,13 @@ And, also
 ![image](https://user-images.githubusercontent.com/17056169/70527363-df666080-1b9f-11ea-815e-47769ff51a16.png)
 
 ---
+
+![image](https://user-images.githubusercontent.com/17056169/70578723-b4612880-1c02-11ea-8a57-9c7f8f4bd071.png)
+
+
+![image](https://user-images.githubusercontent.com/17056169/70578664-93003c80-1c02-11ea-8eb1-85564e5d42d1.png)
+
+---
   
 
 Click on the Start using Jenkins button to start using Jenkins.
