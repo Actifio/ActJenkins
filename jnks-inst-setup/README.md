@@ -38,6 +38,15 @@ After we have successfully installed Jenkins, we can now begin setting it up:
 
 ---
 
+On a Windows server running Jenkins, you will need to install Git executable from  https://git-scm.com/download/win . And, be sure to set the following:  
+
+![image](https://user-images.githubusercontent.com/17056169/70527324-c198fb80-1b9f-11ea-95ef-2aa005bb2c38.png)
+
+And, also  
+
+![image](https://user-images.githubusercontent.com/17056169/70527363-df666080-1b9f-11ea-815e-47769ff51a16.png)
+
+---
   
 
 Click on the Start using Jenkins button to start using Jenkins.
