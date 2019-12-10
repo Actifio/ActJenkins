@@ -1,0 +1,63 @@
+pipeline {
+    agent any 
+
+    // variables for the parameterised execution
+    parameters {
+      string(defaultValue: "admin", description: 'Actifio Username', name: 'ActUser')
+      password(defaultValue: "TopSecret", description: 'Actifio Password', name: 'ActPass')
+      string(defaultValue: "10.65.5.99", description: 'Actifio Appliance', name: 'ActIP')  
+    }
+
+    environment {
+       PATH = "C:\\WINDOWS\\SYSTEM32"
+       }
+
+    stages {
+
+        stage('Clone Git repo ') {
+            agent any 
+            steps {
+            dir('ActJenkins') {
+                   deleteDir()
+                   }
+                echo "Cloning the Git repo to workspace location: ${env.WORKSPACE}"  
+            bat 'dir'
+            bat '"C:\\Program Files\\Git\\bin\\git.exe" clone https://github.com/Actifio/ActJenkins.git'
+            bat 'dir'
+            }
+        }
+
+        stage('List VDP version') {
+            agent any
+            steps {
+                echo 'Listing VDP version...'
+                script {
+              // Run the udsinfo lsversion script
+              msg = powershell(script:"ActJenkins\\act-pipeline-runcommands\\list_vdp_ver.ps1 ${ActUser} ${ActPass} ${ActIP}", returnStdout:true).trim() 
+              println msg
+              }
+              }
+          }
+        stage('Execute reporthealth') {
+            agent any
+            steps {
+                echo 'Running reporthealth ...'
+                script {
+              // Run the reporthealth script
+              msg = powershell(script:"ActJenkins\\act-pipeline-runcommands\\rpt_health.ps1 ${ActUser} ${ActPass} ${ActIP}", returnStdout:true).trim() 
+              println msg
+              }
+              }
+          }
+        stage('Cleanup working Git cloned repo ') {
+            agent any 
+            steps {
+                bat 'dir'
+            dir('ActJenkins') {
+                   deleteDir()
+                   }
+            bat 'dir'
+            }
+        }         
+    }
+}
