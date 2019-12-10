@@ -120,6 +120,27 @@ As you can see all four stages have completed successfully. Click on the Open Bl
 In the following screen, it will list the details of each stage of the job. Click on the stage (1) and expand the Print Message to view the output of the command.
 ![2019-12-09_15-07-05](https://user-images.githubusercontent.com/17056169/70406773-ec972880-1a95-11ea-9c6d-ffc8d5fd7738.png)
 
+---
+# Advanced Configuration: Running Jenkins Pipeline as Code 
+
+In this approach, we can store the pipeline script in a file, and create a pipeline job that checks out the script from the source code repository. The above job can be setup as follow:
+
+## Step 1:
+Login to the Jenkins server and create a pipeline project by clicking on the New Item link on the top left hand corner. Enter the name of the job - **act-pipeline-runcommands** , and click on Pipeline project. Click OK to confirm.
+
+
+## Step 2:
+Under the pipeline section, we will be using the Jenkins declarative pipeline, instead of the scripted pipeline. We will set the definition to **Pipeline script from SCM** and point to the GitHub project i.e. https://github.com/Actifio/ActJenkins . For the script path, point to the act-pipeline-runcommands/Jenkinsfile file.
+
+![image](https://user-images.githubusercontent.com/17056169/70527138-4cc5c180-1b9f-11ea-8876-7bb9029580ae.png)
+
+## Step 3:
+To build the job, click on Build with Parameters to kick it off. 
+
+## Step 4:
+Once it's completed, click on the Console Output to view the output of the job.
+
+---
 
 ## Conclusion
 Using this approach, we can easily create Jenkins pipeline job to integrate the database refresh using Actifio. We can include stages to shutdown applications connecting to the database, connect to database and extract information from tables to be restored after we have refreshed or provisioned the virtual database from Actifio. The benefit of this approach is to have all the scripts stored in a version control system, making the entire refresh highly agile and scalable. 
