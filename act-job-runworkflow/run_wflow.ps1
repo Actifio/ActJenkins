@@ -1,5 +1,3 @@
-run_wflow.ps1 ActIP ActUser ActPass WFlowName $Env:WorkflowList
-
 param(
 [string] $ActIP,
 [string] $ActUser,
