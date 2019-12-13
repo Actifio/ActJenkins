@@ -1,6 +1,6 @@
 # Building a Jenkins freestyle job that refresh an Actifio workflow
 
-The following is an example to build a Jenkins freestyle on Jenkins Windows server. The job uses a referenced parameter that dynamically queries an Actifio VDP appliance for the application types (Oracle, SQLServer, Sybase, etc). Based on the application type, it will dynamically populate the list of applications, ad lastly the list of workflows available.
+The following is an example to build a Jenkins freestyle on Jenkins Windows server. The job uses a referenced parameter that dynamically queries an Actifio VDP appliance for the application types (Oracle, SQLServer, Sybase, etc). Based on the application type, it will dynamically populate the list of applications, and lastly the list of workflows available.
 
 ![image](https://user-images.githubusercontent.com/17056169/70408043-e0619a00-1a9a-11ea-9928-ce051a5b9a0b.png)
 
