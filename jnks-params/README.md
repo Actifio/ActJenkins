@@ -223,7 +223,7 @@ rm "$TmpPasswdFile" -ErrorAction SilentlyContinue
 return $message
 ```
 
-Parameter Name: AppType   
+Parameter Name: WorkflowName   
 Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: AppName,AppType,ActPass,ActIP,ActUser  
 Groovy script:
