@@ -25,3 +25,7 @@ To build the job, click on Build with Parameters to kick it off. If required, yo
 ## Step 5:
 Once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 ![image](https://user-images.githubusercontent.com/17056169/70215685-24e6f000-1792-11ea-8326-a1e1a96f2604.png)
+
+---
+   
+https://www.youtube.com/watch?v=Mblnx0pxobw   
