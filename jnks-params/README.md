@@ -150,7 +150,7 @@ return $message
 
 Parameter Name: **AppName**  
 Parameter Type: Active Choices Reactive parameter  
-Referenced parameters: ActType,ActPass,ActIP,ActUser  
+Referenced parameters: AppType,ActPass,ActIP,ActUser  
 Groovy script:
 ```
 def AppNameList = []
