@@ -21,7 +21,7 @@ Define Jenkins parameters at the start of the build. We will be using Groovy scr
 ![image](https://user-images.githubusercontent.com/17056169/70407818-e3a85600-1a99-11ea-8b1b-f0007120f957.png)
 
 ## Step 4
-Trigger PowerShell script by calling the PowerShell script that refresh the database/application using a workflow
+Trigger PowerShell script by calling the PowerShell script (https://github.com/Actifio/ActJenkins/blob/master/act-job-runworkflow/run_wflow.ps1) that refresh the database/application using a workflow
 
 ## Step 5
 Once it's completed, click on the Console Output to view the output of the workflow job. An example of the output is as follow:
