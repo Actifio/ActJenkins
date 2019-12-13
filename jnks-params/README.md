@@ -69,7 +69,7 @@ ActUser : STRING parameter
 ActPass : PASSWORD parameter  
 ActIP : STRING parameter  
 
-Parameter Name: AppType   
+Parameter Name: **AppType**   
 Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: ActPass,ActIP,ActUser  
 Groovy script:
@@ -148,7 +148,7 @@ rm "$TmpPasswdFile" -ErrorAction SilentlyContinue
 return $message
 ```
 
-Parameter Name: AppName  
+Parameter Name: **AppName**  
 Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: ActType,ActPass,ActIP,ActUser  
 Groovy script:
@@ -223,7 +223,7 @@ rm "$TmpPasswdFile" -ErrorAction SilentlyContinue
 return $message
 ```
 
-Parameter Name: WorkflowName   
+Parameter Name: **WorkflowName**   
 Parameter Type: Active Choices Reactive parameter  
 Referenced parameters: AppName,AppType,ActPass,ActIP,ActUser  
 Groovy script:
