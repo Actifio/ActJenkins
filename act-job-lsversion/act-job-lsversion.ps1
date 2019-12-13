@@ -26,7 +26,7 @@ if (! $env:ACTSESSIONID ){
    break
  }
  else {
-    write-output "The version of the VDP software running on $Env:ActifioIP is as follow"
+    write-output "The version of the VDP software running on $Env:ActIP is as follow"
     udsinfo lsversion
     Disconnect-Act | Out-Null
  } 
