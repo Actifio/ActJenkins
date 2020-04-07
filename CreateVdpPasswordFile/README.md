@@ -10,9 +10,6 @@ In this job, we want to allow the user to provide inputs when running the job. W
 
 ### Step 3:
 Go to the Build section and define the tasks required to build the job. We will be connecting to the VDP appliance using the encrypted file to ensure the credentials are correct. You can copy and paste the following:
-
-### Step 5:
-Build the job and once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 ```
 $pwfile = "c:\scripts\" + $Env:VdpUser + ".key"
 $env:IGNOREACTCERTS = $true
@@ -34,3 +31,7 @@ if (! $env:ACTSESSIONID ){
    Disconnect-Act | Out-Null
  } 
 ```
+
+### Step 4:
+Build the job and once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
+
