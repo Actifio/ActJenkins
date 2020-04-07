@@ -49,21 +49,30 @@ You will need to place the `JenkinsVdpHelper.ps1` script in the `c:\scripts` dir
 
 ## How can I test from command line?
 
-You will need to start a command prompt and run it as administrator. Launch powershell and run the AutoInstallActCLI.ps1 with the appropriate parameters.
+You will need to launch powershell from command prompt and run the `.\JenkinsVdpHelper.ps1` script. For verbose, don't include the `-verbose` option.
+
+PS > .\JenkinsVdpHelper.ps1 -VdpIp x.x -VdpUser cliuser -Action [ list | find | fetch ] -Object [ app | db | wf | apptype | mnt ] -silent -parm1 srch1 -parm2 srch2 -parm3 srch3 -parm4 srch4
 
 ## Parameters
 
 The following are parameters supported:
-* _-download_  This wll download the ActPowerCLI-x.y.z.w.zip from the Actifio github repository.  
-
+* _-Action_   Action supported by this script - list all the object, find a single object, and fetch based on multiple search parameters.  
+* _-Object_   List of objects in VDP appliance - app, db, wf apptype and mnt .
+* _-silent_   Suppress any debugging information when running the script .
+* _-VdpIP_    VDP IP appliance .
+* _-VdpUser_  VDP CLI user .
+* _-parm1_    Seach parameter based on the srch1 value. 
+* _-parm2_    Seach parameter based on the srch2 value. 
+* _-parm3_    Seach parameter based on the srch3 value. 
+* _-parm4_    Seach parameter based on the srch4 value. 
 
 ## Usage:
 
 ## Sample output:
 The following are sample of the different options supported:
 
-### _-download -TmpDir c:\temp_
-Download the zipped file to c:\temp directory .
+### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action list -Object apptype_
+List all the application type in VDP appliance:
 ```
 
 ```
