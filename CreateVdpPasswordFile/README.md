@@ -6,7 +6,13 @@ This job helps build a secure encrypted password file using the VDP CLI user cre
 Login to the Jenkins server and create a freestyle project by clicking on the New Item link on the top left hand corner. Enter the name of the job - CreateVdpPasswordFile , and click on Freestyle project. Click OK to confirm.
 
 ### Step 2:
-In this job, we want to allow the user to provide inputs when running the job. We will create three parameters: VdpUser, VdpPassword and VdpIP by checking on the This project is parameterized. VdpUser and VdoIP will be of String type, whereas VdpPassword will be Password type.
+In this job, we want to allow the user to provide inputs when running the job. We will create three parameters: VdpUser, VdpPassword and VdpIP by checking on the This project is parameterized. VdpUser and VdpIP will be of String type, whereas VdpPassword will be Password type.
+
+![image](https://user-images.githubusercontent.com/17056169/78641196-3123bb00-78f4-11ea-8dff-bff74887872e.png)
+
+![image](https://user-images.githubusercontent.com/17056169/78641252-4ac50280-78f4-11ea-8b67-2b843a324d98.png)
+
+![image](https://user-images.githubusercontent.com/17056169/78641289-5a444b80-78f4-11ea-9814-10bda9899973.png)
 
 ### Step 3:
 Go to the Build section and define the tasks required to build the job. We will be connecting to the VDP appliance using the encrypted file to ensure the credentials are correct. You can copy and paste the following:
