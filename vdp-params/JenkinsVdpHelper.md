@@ -12,7 +12,14 @@ To secure the password, we will leverage on the CreateVdpPasswordFile job to cre
 
 The following uses the Jenkins parameterised build using Active Choices Reactive parameter:
 
-The following code can be used in the Groovy section of the Jenkins parameter:
+![image](https://user-images.githubusercontent.com/17056169/78659386-d21f6f80-790e-11ea-8af9-9dca80d8b27b.png)
+
+The name of the parameter is AppType and the dynamic values are dependent on the VdpUser and VdpIp parameters. We will need to define the two parameters before defining the AppType. The two parameters are used for us to communicate with the Vdp appliance.
+
+When we checked the Groovy Script option, We will need to cut and paste the code from the following section into the Groovy section of the Jenkins parameter:
+
+![image](https://user-images.githubusercontent.com/17056169/78660004-af418b00-790f-11ea-983d-278bfb09803c.png)
+
 ```
 //
 def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
