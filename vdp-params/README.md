@@ -36,10 +36,10 @@ Windows PowerShell: Built-in:
 ```
 $env:hostname
 $env:AppType
-``
+```
 
 Windows Batch: Built-in:
 ```
-%hostname%. 
-%AppType%. 
+%hostname%
+%AppType% 
 ```
