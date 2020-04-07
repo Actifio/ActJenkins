@@ -40,6 +40,11 @@ if (! $env:ACTSESSIONID ){
  } 
 ```
 
+It should look something as follow:
+![image](https://user-images.githubusercontent.com/17056169/78641902-3af9ee00-78f5-11ea-98c7-c08f1e54114f.png)
+
+
 ### Step 4:
 Build the job and once it's completed, click on the Console Output to view the output of the job. An example of the output is as follow:
 
+![image](https://user-images.githubusercontent.com/17056169/78641759-09812280-78f5-11ea-966f-6f34aada8da4.png)
