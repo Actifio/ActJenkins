@@ -49,9 +49,8 @@ You will need to place the `JenkinsVdpHelper.ps1` script in the `c:\scripts` dir
 
 ## How can I test from command line?
 
-You will need to launch powershell from command prompt and run the `.\JenkinsVdpHelper.ps1` script. For verbose, don't include the `-verbose` option.
+You will need to launch powershell from command prompt and run the `.\JenkinsVdpHelper.ps1` script. For verbose, don't include the `-verbose` option. This is useful to test out the script before integrating with Groovy in Jenkins.
 
-PS > .\JenkinsVdpHelper.ps1 -VdpIp x.x -VdpUser cliuser -Action [ list | find | fetch ] -Object [ app | db | wf | apptype | mnt ] -silent -parm1 srch1 -parm2 srch2 -parm3 srch3 -parm4 srch4
 
 ## Parameters
 
@@ -68,11 +67,63 @@ The following are parameters supported:
 
 ## Usage:
 
+```
+PS > .\JenkinsVdpHelper.ps1 -VdpIp x.x -VdpUser cliuser -Action [ list | find | fetch ] -Object [ app | db | wf | apptype | mnt ] -silent -parm1 srch1 -parm2 srch2 -parm3 srch3 -parm4 srch4
+```
+
 ## Sample output:
 The following are sample of the different options supported:
 
-#### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action list -Object apptype_
-List all the application type in VDP appliance:
+#### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action find -Object apptype_
+AppType: List all the SQL Server and Oracle application types in VDP appliance  (reference VdpIP and VdpUser):
+```
+//
+def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
+def powerShellArgs = ' -Action find -Object apptype ' + ' -parm1 SQLServer -parm2 Oracle -silent'
+//
 ```
 
+AppType: List all application types in VDP appliance (reference VdpIP and VdpUser):
 ```
+//
+def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
+def powerShellArgs = ' -Action find -Object apptype -silent'
+//
+```
+
+srcHostname: List the hosts with a selected application type (reference VdpIP, VdpUser, srcAppType):
+```
+//
+def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
+def powerShellArgs = ' -Action find -Object host -parm1 ' + srcAppType + ' -silent'
+//
+```
+
+srcAppName: List all applications protected by Vdp based on the host of the selected application type (reference VdpIP, VdpUser, srcAppType, srcHostname):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action fetch -Object app -parm1 ' + srcAppType + ' -parm2 ' + srcHostname + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
+
+thisWorkflow: List all workflows based on the application name and application type (reference VdpIP, VdpUser, srcAppType, srcAppName):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action find -Object wf -parm1 ' + srcAppName + ' -parm2 ' + srcAppType + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
+
+thisImage: List all images associated with the application name and application type (reference VdpIP, VdpUser, srcAppType, srcAppName):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action find -Object image -parm1 ' + srcAppName + ' -parm2 ' + srcAppType + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
+
+Suggested Description of the parameters:
+```
+VdpIP: VDP IP address
+VdpUser: VDP service account for this Jenkins job
+srcAppType: Database Application Type: Oracle and SQL
+srcHostname: List of hosts with the selected application type
+srcAppName: List of applications with the selected application type on the hostname
+Workflow: List of workflows with the selected application name and application type
+```
+ImageName: List of images with the selected application name and application type
