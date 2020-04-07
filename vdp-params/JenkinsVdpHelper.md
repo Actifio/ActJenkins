@@ -71,7 +71,7 @@ The following are parameters supported:
 ## Sample output:
 The following are sample of the different options supported:
 
-### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action list -Object apptype_
+##### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action list -Object apptype_
 List all the application type in VDP appliance:
 ```
 
