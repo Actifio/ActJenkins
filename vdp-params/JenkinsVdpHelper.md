@@ -6,7 +6,7 @@ There are situation where a user wants to build a Jenkins job using dynamic valu
 
 This powershell script retrieves information from the VDP appliance based on certain operations. This script will be invoked from Groovy script section to populate the list of possible values for the Jenkins parameter.
 
-To secure the password, we will leverage on the CreateVdpPasswordFile job to create a secure encrypted password file. This way we will not have to pass the password to the script and job. For more information have a look at [**CreateVdpPasswordFile**](https://github.com/Actifio/ActJenkins/tree/master/CreateVdpPasswordFile).
+To secure the password, we will leverage on the [**CreateVdpPasswordFile**](https://github.com/Actifio/ActJenkins/tree/master/CreateVdpPasswordFile) job to create a secure encrypted password file. This way we will not have to pass the password to the script and job. 
 
 ## How does this work with Groovy?
 
