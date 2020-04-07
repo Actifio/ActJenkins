@@ -40,6 +40,6 @@ $env:AppType
 
 Windows Batch: Built-in:
 ```
-%hostname%
-%AppType%
+%hostname%. 
+%AppType%. 
 ```
