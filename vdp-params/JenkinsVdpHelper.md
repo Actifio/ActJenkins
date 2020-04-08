@@ -74,7 +74,7 @@ PS > .\JenkinsVdpHelper.ps1 -VdpIp x.x -VdpUser cliuser -Action [ list | find | 
 ## Sample output:
 The following are sample of the different options supported:
 
-AppType: List all the SQL Server and Oracle application types in VDP appliance  (reference VdpIP and VdpUser):
+AppType: Find all the SQL Server and Oracle application types in VDP appliance  (reference VdpIP and VdpUser):
 ```
 //
 def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
@@ -86,7 +86,7 @@ AppType: List all application types in VDP appliance (reference VdpIP and VdpUse
 ```
 //
 def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
-def powerShellArgs = ' -Action find -Object apptype -silent'
+def powerShellArgs = ' -Action list -Object apptype -silent'
 //
 ```
 
