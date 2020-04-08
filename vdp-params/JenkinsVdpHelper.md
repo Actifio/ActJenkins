@@ -91,12 +91,31 @@ def powerShellArgs = ' -Action find -Object apptype -silent'
 //
 ```
 
+HostAppType: List all application types for a selected host in VDP appliance (reference VdpIP, VdpUser, srcHostname):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action fetch -Object apptype -parm1 ' + srcHostname + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
+
 srcHostname: List the hosts with a selected application type (reference VdpIP, VdpUser, srcAppType):
 ```
 //
 def powerShellCmd = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser 
 def powerShellArgs = ' -Action find -Object host -parm1 ' + srcAppType + ' -silent'
 //
+```
+
+allHostname: List the hosts with a selected application type (reference VdpIP, VdpUser):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action list -Object host -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+
+```
+
+allAppName: List all applications based on the application type (reference VdpIP, VdpUser, srcAppType):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action find -Object app -parm1 ' + SrcAppType + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
 ```
 
 srcAppName: List all applications protected by Vdp based on the host of the selected application type (reference VdpIP, VdpUser, srcAppType, srcHostname):
@@ -116,6 +135,19 @@ thisImage: List all images associated with the application name and application 
 def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action find -Object image -parm1 ' + srcAppName + ' -parm2 ' + srcAppType + ' -silent'
 def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
 ```
+---
+
+TgtHostname: List all hostnames with mounted images from the source hostname and application name (reference VdpIP, VdpUser, srcHostname, srcAppName):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action find -Object mnt -parm1 ' + SrcHostname + ' -parm2 ' + SrcAppName + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
+
+TgtAppname: List all application names on the target hostname with with mounted images from the source hostname and application name (reference VdpIP, VdpUser, srcHostname, srcAppName, TgtHostname):
+```
+def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action fetch -Object mnt -parm1 ' + SrcHostname + ' -parm2 ' + SrcAppName + ' -parm3 ' + TgtHostname + ' -silent'
+def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
+```
 
 Suggested Description of the parameters:
 ```
@@ -125,5 +157,5 @@ srcAppType: Database Application Type: Oracle and SQL
 srcHostname: List of hosts with the selected application type
 srcAppName: List of applications with the selected application type on the hostname
 Workflow: List of workflows with the selected application name and application type
-```
 ImageName: List of images with the selected application name and application type
+```
