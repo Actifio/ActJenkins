@@ -49,8 +49,52 @@ You will need to place the `JenkinsVdpHelper.ps1` script in the `c:\scripts` dir
 
 ## How can I test from command line?
 
-You will need to launch powershell from command prompt and run the `.\JenkinsVdpHelper.ps1` script. For verbose, don't include the `-verbose` option. This is useful to test out the script before integrating with Groovy in Jenkins.
+You will need to launch powershell from command prompt and run the `.\JenkinsVdpHelper.ps1` script. For verbose, don't include the `-verbose` option. This is useful to test out the script before integrating with Groovy in Jenkins. You can also specify a passwordfile when running the script. Following are some examples:
 
+Connect to VDP appliance 10.10.10.55 and list all application types:
+```
+PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.55 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action list -object apptype
+I have successfully logged into 10.10.10.55 as cliuser using the .\cliuser2.key encrypted password file
+I will be processing ProcessAppType - list .
+
+CIFS|DB2Instance|Exchange|FileSystem|LVM Volume|Microsoft Hyper-V VSS Writer|MYSQLInstance|nas|NFS|Oracle|SAPHANA|SqlInstance|SQLServer|SYBASEInstance|SystemState|VMBackup|
+I have successfully logged out from 10.10.10.55
+```
+
+When integrating with Jenkins and Groovy, use the -silent parameters:
+```
+PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.55 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action list -object apptype -silent
+CIFS|DB2Instance|Exchange|FileSystem|LVM Volume|Microsoft Hyper-V VSS Writer|MYSQLInstance|nas|NFS|Oracle|SAPHANA|SqlInstance|SQLServer|SYBASEInstance|SystemState|VMBackup|
+```
+
+Connect to VDP appliance 10.10.10.1 with limited number of applications and list all application types:
+```
+PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.1 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action list -object apptype
+I have successfully logged into 10.10.10.1 as cliuser using the .\cliuser2.key encrypted password file
+I will be processing ProcessAppType - list .
+
+Oracle|SQLServer|
+I have successfully logged out from 10.10.10.1
+PS C:\scripts>
+```
+
+Filter out the Oracle application type:
+```
+PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.1 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action find -object apptype -parm1 oracle 
+I have successfully logged into 10.10.10.1 as cliuser using the .\cliuser2.key encrypted password file
+I will be processing ProcessAppType - find . 
+
+Oracle|
+I have successfully logged out from 10.10.10.1
+PS C:\scripts>
+```
+
+Integrating with Jenkins parameter:
+```
+PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.1 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action list -object apptype -silent
+Oracle|SQLServer|
+PS C:\scripts>
+```
 
 ## Parameters
 
