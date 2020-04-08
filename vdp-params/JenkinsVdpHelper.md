@@ -89,7 +89,7 @@ I have successfully logged out from 10.10.10.1
 PS C:\scripts>
 ```
 
-Integrating with Jenkins parameter:
+Use the `-silent` option to integrate with Jenkins Active Choices Reactive parameter:
 ```
 PS C:\scripts> .\JenkinsVdpHelper.ps1 -vdpip 10.10.10.1 -vdpuser cliuser -vdppassfile ".\cliuser2.key"  -action list -object apptype -silent
 Oracle|SQLServer|
