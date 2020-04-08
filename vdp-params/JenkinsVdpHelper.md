@@ -45,7 +45,7 @@ if(process.exitValue()){
 return clist
 ```
 
-You will need to place the `JenkinsVdpHelper.ps1` script in the `c:\scripts` directory. Since we are looking for Oracle and SQL Server application type, we have included -parm1 SQLServer and -parm2 Oracle in argument section of the script.
+You will need to place the `JenkinsVdpHelper.ps1` script in the `c:\scripts` directory. In the above example, since we are looking for Oracle and SQL Server application type, we have included -parm1 SQLServer and -parm2 Oracle in argument section of the script. For more examples on refer to the `Sample Output` section.
 
 ## How can I test from command line?
 
@@ -74,7 +74,6 @@ PS > .\JenkinsVdpHelper.ps1 -VdpIp x.x -VdpUser cliuser -Action [ list | find | 
 ## Sample output:
 The following are sample of the different options supported:
 
-#### _-VdpIp 10.10.10.1 -VdpUser cliuser -Action find -Object apptype_
 AppType: List all the SQL Server and Oracle application types in VDP appliance  (reference VdpIP and VdpUser):
 ```
 //
