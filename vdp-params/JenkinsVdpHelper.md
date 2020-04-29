@@ -148,7 +148,7 @@ def powerShellArgs = ' -Action find -Object host -parm1 ' + srcAppType + ' -sile
 //
 ```
 
-allHostname: List the hosts with a selected application type (reference VdpIP, VdpUser):
+allHostname: List all the hosts in the system (reference VdpIP, VdpUser):
 ```
 def powerShellCommand = 'c:\\scripts\\JenkinsVdpHelper.ps1 -VdpIP ' + VdpIP + ' -VdpUser ' + VdpUser + ' -Action list -Object host -silent'
 def shellCommand = "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"${powerShellCommand}\""
