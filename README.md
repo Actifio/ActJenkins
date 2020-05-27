@@ -11,6 +11,8 @@ As you probably aware, Actifio comes with the HTML5 GUI called Actifio Global Ma
 * Jenkins jobs can be integrated with source code repository, scripting languages ((bash, Ruby, Python, Powershell, Java, Gradle, Groovy, etc) and other DevOps tools
 * Jenkins provide built in automation and scheduling (e-mail notifications, Slack integration), highly extensible and rich plug-ins ecosystem. 
 
+I have put together a [blog post](https://github.com/Actifio/ActJenkins/blob/master/Blog_Integrating_VDP_with_Jenkins.MD "Infrastructure as Code") on leveraging Jenkins to deploy virtual databases - **Infrastructure as Code**. This approach allows you to place all the SQL and Actifio related scripts in SCM such as GitHub. User will just need to commit the changes, and the database build/provision will be fully automated. 
+
 ---
 
 ### How do I integrate with Jenkins?
